@@ -6,6 +6,7 @@ import UnitDistance.C04_SplittingRamification
 import UnitDistance.C05_MaximalUnramified
 import UnitDistance.C06_CMFields
 import UnitDistance.C07_ConductorsCharacters
+import UnitDistance.C08_Discriminants
 import UnitDistance.C11_ProPGroups
 import UnitDistance.C12_GolodShafarevich
 import UnitDistance.C23_Prop33
