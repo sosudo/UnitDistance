@@ -23,4 +23,5 @@ import UnitDistance.C25_Prop35
 import UnitDistance.C26_Prop36
 import UnitDistance.C27_Prop37
 import UnitDistance.C28_Lemma24
+import UnitDistance.C29_Lemma25
 import UnitDistance.C32_Prop38
