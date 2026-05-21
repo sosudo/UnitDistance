@@ -27,6 +27,8 @@ structure MinkowskiLatticeData (d : AdmissibleDatum) : Type* where
   /-- Every u ∈ U lies in Q^{-2}·O_K -/
   U_integral : letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK;
     ∀ u ∈ U, IsIntegral ℤ ((d.Q : d.K) ^ 2 * u)
+  /-- Every coordinate projection of phi is injective (each σ_r : K → ℂ is a field embedding) -/
+  phi_coord_injective : ∀ r : Fin d.f, Function.Injective (fun k => phi k r)
 
 /-- The sup-norm on ℂ^f: ‖z‖_∞ = max_r |z_r|. -/
 noncomputable def supNorm {n : ℕ} [NeZero n] (z : Fin n → ℂ) : ℝ :=

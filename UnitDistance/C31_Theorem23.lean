@@ -59,6 +59,10 @@ private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d
     U := U
     U_norm_one := fun u hu _ => hU_norm u hu (Classical.arbitrary _)
     U_integral := hU_integral
+    phi_coord_injective := by
+      intro r k₁ k₂ h
+      -- h : Classical.arbitrary (d.K →+* ℂ) k₁ = Classical.arbitrary (d.K →+* ℂ) k₂
+      exact RingHom.injective (Classical.arbitrary (d.K →+* ℂ)) h
   }
 
 /-- Theorem 2.3: Given a sequence of admissible data with fixed primes q₁,...,qₜ,
