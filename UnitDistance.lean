@@ -7,3 +7,4 @@ import UnitDistance.C07_ConductorsCharacters
 import UnitDistance.C11_ProPGroups
 import UnitDistance.C12_GolodShafarevich
 import UnitDistance.C23_Prop33
+import UnitDistance.C24_Prop34
