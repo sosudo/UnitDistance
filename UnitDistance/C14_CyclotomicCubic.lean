@@ -11,7 +11,7 @@ namespace UnitDistance.NumberTheory
     number field F with [F:ℚ] = 3 and conductor r, where the conductor is
     fieldConductor F (the least m ≥ 1 with F ⊆ ℚ(ζ_m)). -/
 axiom cyclotomic_cubic_subfield_exists (r : ℕ) (hr : r.Prime) (hmod : r % 3 = 1) :
-    ∃ (F : Type*) [Field F] [NumberField F] [Algebra ℚ F] [NumberField.IsTotallyReal F],
+    ∃ (F : Type*) (_ : Field F) (_ : NumberField F) (_ : Algebra ℚ F) (_ : NumberField.IsTotallyReal F),
       Module.finrank ℚ F = 3 ∧ fieldConductor F = r
 
 /-- Conductor-discriminant formula for finite abelian extensions of ℚ.
