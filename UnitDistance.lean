@@ -10,5 +10,10 @@ import UnitDistance.C08_Discriminants
 import UnitDistance.C09_Frobenius
 import UnitDistance.C11_ProPGroups
 import UnitDistance.C12_GolodShafarevich
+import UnitDistance.C13_ShafarevichRelRank
+import UnitDistance.C14_CyclotomicCubic
+import UnitDistance.C15_Chebotarev
+import UnitDistance.C16_MinkowskiClassNumber
+import UnitDistance.C21_NormOneSetU
 import UnitDistance.C23_Prop33
 import UnitDistance.C24_Prop34
