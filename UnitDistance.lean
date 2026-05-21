@@ -24,4 +24,7 @@ import UnitDistance.C26_Prop36
 import UnitDistance.C27_Prop37
 import UnitDistance.C28_Lemma24
 import UnitDistance.C29_Lemma25
+import UnitDistance.C210_Lemma26
+import UnitDistance.C31_Theorem23
 import UnitDistance.C32_Prop38
+import UnitDistance.C41_Theorem11
