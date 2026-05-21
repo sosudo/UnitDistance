@@ -83,9 +83,64 @@ noncomputable def discOverlapArea (R : ℝ) : ℝ :=
 noncomputable def discOverlapRatio (R : ℝ) : ℝ :=
   discOverlapArea R / discArea R
 
+/-- Auxiliary: 2R → ∞ as R → ∞. -/
+private lemma twoR_tendsto_atTop : Filter.Tendsto (fun R : ℝ => 2 * R) Filter.atTop Filter.atTop :=
+  Filter.tendsto_atTop_atTop_of_monotone
+    (fun a b hab => by linarith) (fun b => ⟨b / 2, by linarith⟩)
+
+/-- Auxiliary: 1/(2R) → 0 as R → ∞. -/
+private lemma one_div_twoR_tendsto :
+    Filter.Tendsto (fun R : ℝ => (1 : ℝ) / (2 * R)) Filter.atTop (nhds 0) := by
+  have h := Filter.Tendsto.comp tendsto_inv_atTop_zero twoR_tendsto_atTop
+  simp only [one_div]; convert h using 2
+
+/-- Auxiliary: πR → ∞ as R → ∞. -/
+private lemma piMul_tendsto_atTop :
+    Filter.Tendsto (fun R : ℝ => Real.pi * R) Filter.atTop Filter.atTop :=
+  Filter.tendsto_atTop_atTop_of_monotone
+    (fun a b hab => mul_le_mul_of_nonneg_left hab Real.pi_pos.le)
+    (fun b => ⟨b / Real.pi, le_of_eq (by field_simp)⟩)
+
+/-- Auxiliary: √(4R²-1)/(2πR²) → 0 as R → ∞.
+    Proof: √(4R²-1) ≤ 2R, so the ratio ≤ 2R/(2πR²) = 1/(πR) → 0. -/
+private lemma sqrt_ratio_tendsto_zero :
+    Filter.Tendsto (fun R : ℝ => Real.sqrt (4 * R ^ 2 - 1) / (2 * Real.pi * R ^ 2))
+    Filter.atTop (nhds 0) := by
+  apply squeeze_zero_norm' _ (Filter.Tendsto.comp tendsto_inv_atTop_zero piMul_tendsto_atTop)
+  filter_upwards [Filter.eventually_ge_atTop (1 : ℝ)] with R hR
+  rw [Real.norm_of_nonneg (by positivity)]
+  have hsqrt : Real.sqrt (4 * R ^ 2 - 1) ≤ 2 * R := by
+    rw [show (2 * R) = Real.sqrt ((2 * R) ^ 2) from (Real.sqrt_sq (by linarith)).symm]
+    exact Real.sqrt_le_sqrt (by nlinarith)
+  calc Real.sqrt (4 * R ^ 2 - 1) / (2 * Real.pi * R ^ 2)
+      ≤ 2 * R / (2 * Real.pi * R ^ 2) := div_le_div_of_nonneg_right hsqrt (by positivity)
+    _ = (Real.pi * R)⁻¹ := by field_simp
+
 /-- Key geometric property: ρ_R = a(R)/b(R) → 1 as R → ∞.
-    As R → ∞, two unit-distance discs of radius R overlap in nearly all of their area. -/
-axiom discOverlapRatio_tendsto_one :
-    Filter.Tendsto discOverlapRatio Filter.atTop (nhds 1)
+    As R → ∞, two unit-distance discs of radius R overlap in nearly all of their area.
+
+    Proof: For R ≥ 1, discOverlapRatio R = (2/π)·arccos(1/(2R)) - √(4R²-1)/(2πR²).
+    As R → ∞: the first term → (2/π)·(π/2) = 1 (since arccos is continuous and 1/(2R) → 0),
+    and the second term → 0 (since √(4R²-1) ≤ 2R, giving ratio ≤ 1/(πR) → 0). -/
+theorem discOverlapRatio_tendsto_one :
+    Filter.Tendsto discOverlapRatio Filter.atTop (nhds 1) := by
+  have hterm1 : Filter.Tendsto (fun R : ℝ => (2 / Real.pi) * Real.arccos (1 / (2 * R)))
+      Filter.atTop (nhds 1) := by
+    have harccos : Filter.Tendsto (fun R : ℝ => Real.arccos (1 / (2 * R))) Filter.atTop
+        (nhds (Real.pi / 2)) :=
+      Real.arccos_zero ▸ Filter.Tendsto.arccos one_div_twoR_tendsto
+    have := harccos.const_mul (2 / Real.pi)
+    simp only [show (2 : ℝ) / Real.pi * (Real.pi / 2) = 1 from by field_simp] at this
+    exact this
+  have hmain : Filter.Tendsto (fun R : ℝ =>
+      (2 / Real.pi) * Real.arccos (1 / (2 * R)) -
+      Real.sqrt (4 * R ^ 2 - 1) / (2 * Real.pi * R ^ 2))
+      Filter.atTop (nhds 1) := by
+    simpa using hterm1.sub sqrt_ratio_tendsto_zero
+  apply hmain.congr'
+  filter_upwards [Filter.eventually_ge_atTop (1 : ℝ)] with R hR
+  unfold discOverlapRatio discArea discOverlapArea
+  rw [if_neg (by linarith)]
+  field_simp
 
 end UnitDistance
