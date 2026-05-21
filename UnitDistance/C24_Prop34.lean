@@ -9,13 +9,13 @@ namespace UnitDistance.ProP
     Equivalently, a nontrivial finitely generated pro-p group with r ≤ d²/4 is infinite. -/
 theorem prop34_golodShafarevich_forward (G : ProPGroup)
     (hnt : G.IsNontrivial) (hfin : ¬G.IsInfinite) :
-    G.genRank ^ 2 < 4 * G.relRank := by
-  sorry
+    G.genRank ^ 2 < 4 * G.relRank :=
+  golodShafarevich_finite G hnt hfin
 
 theorem prop34_golodShafarevich_infinite (G : ProPGroup)
     (hnt : G.IsNontrivial)
     (hr : 4 * G.relRank ≤ G.genRank ^ 2) :
-    G.IsInfinite := by
-  sorry
+    G.IsInfinite :=
+  golodShafarevich_infinite G hnt hr
 
 end UnitDistance.ProP

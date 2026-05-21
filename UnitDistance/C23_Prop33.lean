@@ -9,7 +9,7 @@ namespace UnitDistance.ProP
     a closed normal subgroup N, then d(G/N) = d(G) and r(G/N) ≤ r(G)+k. -/
 theorem prop33_frattiniQuotientRanks (G N : ProPGroup) (k : ℕ) :
     ProPGroup.genRank (G.quotient N) = ProPGroup.genRank G ∧
-    ProPGroup.relRank (G.quotient N) ≤ ProPGroup.relRank G + k := by
-  sorry
+    ProPGroup.relRank (G.quotient N) ≤ ProPGroup.relRank G + k :=
+  frattini_burnside_genRank_stable G N k
 
 end UnitDistance.ProP
