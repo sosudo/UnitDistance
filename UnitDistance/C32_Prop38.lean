@@ -47,6 +47,10 @@ axiom prop38_fieldConstruction :
     -- P5: class number bound h(Kⱼ) ≤ H_ℓ^{fⱼ}
     (∀ j, letI := (data j).fieldK; letI := (data j).numberFieldK;
       (Fintype.card (ClassGroup (𝓞 (data j).K)) : ℝ) ≤
-        H_ℓ ^ (data j).f)
+        H_ℓ ^ (data j).f) ∧
+    -- Shared primes: all levels use the same t primes q₁,...,qₜ
+    (∀ j (hj : (data j).t = t) (h0 : (data 0).t = t) (i : Fin t),
+        (data j).primes (Fin.cast hj.symm i) =
+        (data 0).primes (Fin.cast h0.symm i))
 
 end UnitDistance.NumberTheory
