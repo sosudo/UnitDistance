@@ -1,6 +1,5 @@
 import UnitDistance.Basic
 import UnitDistance.C01_UnitDistanceFunctions
-<<<<<<< HEAD
 import UnitDistance.C02_AdmissibleDatum
 import UnitDistance.C03_BasicFieldConventions
 import UnitDistance.C04_SplittingRamification
@@ -8,12 +7,7 @@ import UnitDistance.C05_MaximalUnramified
 import UnitDistance.C06_CMFields
 import UnitDistance.C07_ConductorsCharacters
 import UnitDistance.C08_Discriminants
-=======
-import UnitDistance.C03_BasicFieldConventions
-import UnitDistance.C04_SplittingRamification
-import UnitDistance.C06_CMFields
-import UnitDistance.C07_ConductorsCharacters
->>>>>>> worktree/chunk-0-9
+import UnitDistance.C09_Frobenius
 import UnitDistance.C11_ProPGroups
 import UnitDistance.C12_GolodShafarevich
 import UnitDistance.C23_Prop33
