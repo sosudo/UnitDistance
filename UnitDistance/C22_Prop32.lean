@@ -29,10 +29,11 @@ subfield cut out by χ = χ₁⋯χ_ℓ. Writing D = ∏ r_i, the conclusion is:
     let L_i be the cyclic cubic subfield of ℚ(ζ_{r_i}), M = L₁⋯L_ℓ their compositum,
     and F ⊂ M the cyclic cubic subfield cut out by χ = χ₁⋯χ_ℓ. Then:
     (1) each L_i is totally real,
-    (2) L₁,...,L_ℓ are linearly disjoint over ℚ, so Gal(M/ℚ) ≅ (ℤ/3ℤ)^ℓ,
-    (3) Gal(M/F) ≅ (ℤ/3ℤ)^{ℓ-1},
-    (4) |D_F| = (∏ r_i)²,
-    (5) M/F is everywhere unramified. -/
+    (2) L₁,...,L_ℓ are linearly disjoint over ℚ, so [M:ℚ] = 3^ℓ (Gal(M/ℚ) ≅ (ℤ/3ℤ)^ℓ),
+    (3) [M:F] = 3^{ℓ-1} (Gal(M/F) ≅ (ℤ/3ℤ)^{ℓ-1}),
+    (4) M is totally real,
+    (5) |D_F| = (∏ r_i)²,
+    (6) M/F is everywhere unramified. -/
 axiom prop32_galoisStructure_discUnramified
     (ℓ : ℕ) (hℓ : 1 ≤ ℓ)
     (r : Fin ℓ → ℕ) (hr_prime : ∀ i, (r i).Prime) (hr_mod : ∀ i, r i % 3 = 1)
@@ -47,6 +48,16 @@ axiom prop32_galoisStructure_discUnramified
       -- F is totally real
       (letI : Field F := ‹_›; letI : NumberField F := ‹_›;
        IsTotallyReal F) ∧
+      -- [M:ℚ] = 3^ℓ (Gal(M/ℚ) ≅ (ℤ/3ℤ)^ℓ by linear disjointness)
+      (letI : Field M := ‹_›; letI : NumberField M := ‹_›; letI : Algebra ℚ M := ‹_›;
+       Module.finrank ℚ M = 3 ^ ℓ) ∧
+      -- [M:F] = 3^{ℓ-1} (Gal(M/F) ≅ (ℤ/3ℤ)^{ℓ-1})
+      (letI : Field F := ‹_›; letI : Algebra ℚ F := ‹_›;
+       letI : Field M := ‹_›; letI : Algebra ℚ M := ‹_›; letI : Algebra F M := ‹_›;
+       Module.finrank F M = 3 ^ (ℓ - 1)) ∧
+      -- M is totally real (compositum of totally real fields)
+      (letI : Field M := ‹_›; letI : NumberField M := ‹_›;
+       IsTotallyReal M) ∧
       -- |D_F| = (∏ r_i)²
       (letI : Field F := ‹_›; letI : NumberField F := ‹_›;
        (discr F).natAbs = (∏ i : Fin ℓ, r i) ^ 2) ∧
