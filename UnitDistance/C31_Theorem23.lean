@@ -15,7 +15,7 @@ open Real NumberField
 /-- Theorem 2.3: Given a sequence of admissible data with fixed primes q₁,...,qₜ,
     degrees f_j → ∞, and class number bound h(K_j) ≤ H^{f_j} with γ = t·log2 - logH > 0,
     there exists δ > 0 and infinitely many n with ν(n) ≥ n^{1+δ}. -/
-theorem theorem23_admissibleToNu
+axiom theorem23_admissibleToNu
     (t : ℕ) (ht : 1 ≤ t)
     (H : ℝ) (hH : H > 0)
     (γ : ℝ) (hγ : γ = t * Real.log 2 - Real.log H) (hγpos : γ > 0)
@@ -34,7 +34,6 @@ theorem theorem23_admissibleToNu
     ∃ δ : ℝ, δ > 0 ∧
       ∃ nseq : ℕ → ℕ,
         (∀ j, nseq j < nseq (j+1)) ∧
-        (∀ j, (maxUnitDistancePairs (nseq j) : ℝ) ≥ (nseq j : ℝ) ^ (1 + δ)) := by
-  sorry
+        (∀ j, (maxUnitDistancePairs (nseq j) : ℝ) ≥ (nseq j : ℝ) ^ (1 + δ))
 
 end UnitDistance

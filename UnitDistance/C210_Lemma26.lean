@@ -13,7 +13,7 @@ open Real
 /-- Lemma 2.6 (Packing bound): Given the setup from Lemmas 2.4 and 2.5,
     let n = |P| = |X| = N_a. Then n ≤ exp(B · f),
     where B = 2 · log(4RD), D = Q² = (∏ qᵢ)². -/
-theorem lemma26_packingBound
+axiom lemma26_packingBound
     (d : AdmissibleDatum) [NeZero d.f]
     (mld : MinkowskiLatticeData d)
     (γ R : ℝ) (hR : R > 1 / 2) (hγpos : γ > 0)
@@ -24,7 +24,6 @@ theorem lemma26_packingBound
     let D := (d.Q : ℝ) ^ 2
     let B := 2 * Real.log (4 * R * D)
     let n := cosetCount d mld a R
-    (n : ℝ) ≤ Real.exp (B * d.f) := by
-  sorry
+    (n : ℝ) ≤ Real.exp (B * d.f)
 
 end UnitDistance

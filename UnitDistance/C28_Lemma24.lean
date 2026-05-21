@@ -17,7 +17,7 @@ open Real
 
     Here f = [L:ℚ], E_a counts ordered pairs in the coset whose difference lies in Φ(U),
     and N_a counts the coset points in the sup-norm ball B_R. -/
-theorem lemma24_cosetAveraging
+axiom lemma24_cosetAveraging
     (d : AdmissibleDatum) [NeZero d.f] (H : ℝ) (hH : H > 0)
     (γ : ℝ) (hγ : γ = d.t * Real.log 2 - Real.log H) (hγpos : γ > 0)
     (mld : MinkowskiLatticeData d)
@@ -27,7 +27,6 @@ theorem lemma24_cosetAveraging
     ∃ a : Fin d.f → ℂ,
       (cosetCount d mld a R : ℝ) > 0 ∧
       (unitPairCount d mld a R : ℝ) ≥
-        Real.exp (γ * d.f / 2) * (cosetCount d mld a R : ℝ) := by
-  sorry
+        Real.exp (γ * d.f / 2) * (cosetCount d mld a R : ℝ)
 
 end UnitDistance

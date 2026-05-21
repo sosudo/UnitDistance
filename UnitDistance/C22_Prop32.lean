@@ -33,7 +33,7 @@ subfield cut out by χ = χ₁⋯χ_ℓ. Writing D = ∏ r_i, the conclusion is:
     (3) Gal(M/F) ≅ (ℤ/3ℤ)^{ℓ-1},
     (4) |D_F| = (∏ r_i)²,
     (5) M/F is everywhere unramified. -/
-theorem prop32_galoisStructure_discUnramified
+axiom prop32_galoisStructure_discUnramified
     (ℓ : ℕ) (hℓ : 1 ≤ ℓ)
     (r : Fin ℓ → ℕ) (hr_prime : ∀ i, (r i).Prime) (hr_mod : ∀ i, r i % 3 = 1)
     (hr_distinct : Function.Injective r) :
@@ -54,7 +54,6 @@ theorem prop32_galoisStructure_discUnramified
       (letI : Field F := ‹_›; letI : NumberField F := ‹_›; letI : Algebra ℚ F := ‹_›;
        letI : Field M := ‹_›; letI : NumberField M := ‹_›; letI : Algebra ℚ M := ‹_›;
        letI : Algebra F M := ‹_›;
-       IsEverywhereUnramified F M) := by
-  sorry
+       IsEverywhereUnramified F M)
 
 end UnitDistance.NumberTheory

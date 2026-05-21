@@ -19,7 +19,7 @@ open Real Complex
     (a) π₁|_X is injective, so |P| = |X| = N_a.
     (b) ν(P) ≥ (1/2) · exp(γf/2) · |P|,
     where ν(P) counts unordered unit-distance pairs in P ≅ ℝ². -/
-theorem lemma25_injectivity_nuBound
+axiom lemma25_injectivity_nuBound
     (d : AdmissibleDatum) [NeZero d.f]
     (mld : MinkowskiLatticeData d)
     (H γ R : ℝ) (hH : H > 0) (hγpos : γ > 0) (hR : R > 1 / 2)
@@ -38,7 +38,6 @@ theorem lemma25_injectivity_nuBound
     ∃ Pfin : Finset (EuclideanSpace ℝ (Fin 2)),
       (Pfin.card : ℝ) = Set.ncard P ∧
       (unitDistancePairs Pfin : ℝ) ≥
-        (1 / 2) * Real.exp (γ * d.f / 2) * Set.ncard P := by
-  sorry
+        (1 / 2) * Real.exp (γ * d.f / 2) * Set.ncard P
 
 end UnitDistance

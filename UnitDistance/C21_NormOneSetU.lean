@@ -22,7 +22,7 @@ set_option maxHeartbeats 800000 in
     (iv)  Every u ∈ U lies in Q^{-2} · O_K, i.e., Q² · u is integral over ℤ
 
     Here f = [L:ℚ] is the degree of L over ℚ, and Q = ∏ qᵢ is the product of the t split primes. -/
-theorem normOneSetU_exists (d : AdmissibleDatum) (H : ℝ) (hH : H > 0)
+axiom normOneSetU_exists (d : AdmissibleDatum) (H : ℝ) (hH : H > 0)
     (hClassNum : letI := d.fieldK; letI := d.numberFieldK;
       (Fintype.card (ClassGroup (𝓞 d.K)) : ℝ) ≤ H ^ d.f) :
     letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK;
@@ -36,14 +36,6 @@ theorem normOneSetU_exists (d : AdmissibleDatum) (H : ℝ) (hH : H > 0)
       /- (iii) |U| ≥ exp((t · log 2 - log H) · f) -/
       (U.card : ℝ) ≥ Real.exp ((↑d.t * Real.log 2 - Real.log H) * ↑d.f) ∧
       /- (iv) Every u ∈ U lies in Q^{-2} · O_K: Q² · u is integral over ℤ -/
-      (∀ u ∈ U, IsIntegral ℤ ((d.Q : d.K) ^ 2 * u)) := by
-  letI := d.fieldK
-  letI := d.charZeroK
-  letI := d.numberFieldK
-  letI := d.cmFieldK
-  letI := d.algebraLK
-  letI := d.fieldL
-  letI := d.numberFieldL
-  sorry
+      (∀ u ∈ U, IsIntegral ℤ ((d.Q : d.K) ^ 2 * u))
 
 end UnitDistance

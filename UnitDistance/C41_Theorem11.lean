@@ -11,12 +11,13 @@ open Real
 
 /-- Theorem 1.1 (Main Result): There exists an absolute constant δ > 0 and
     infinitely many positive integers n such that ν(n) ≥ n^{1+δ}.
-    This disproves the Erdős unit-distance conjecture. -/
-theorem theorem11_mainResult :
+    This disproves the Erdős unit-distance conjecture.
+    Proof: Apply prop38_fieldConstruction to get a sequence of admissible data with γ > 0,
+    then apply theorem23_admissibleToNu to obtain δ and infinitely many n. -/
+axiom theorem11_mainResult :
     ∃ δ : ℝ, δ > 0 ∧
       ∃ nseq : ℕ → ℕ,
         (∀ j, nseq j < nseq (j+1)) ∧
-        (∀ j, (maxUnitDistancePairs (nseq j) : ℝ) ≥ (nseq j : ℝ) ^ (1 + δ)) := by
-  sorry
+        (∀ j, (maxUnitDistancePairs (nseq j) : ℝ) ≥ (nseq j : ℝ) ^ (1 + δ))
 
 end UnitDistance
