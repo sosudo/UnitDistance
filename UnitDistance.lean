@@ -19,6 +19,8 @@ import UnitDistance.C21_NormOneSetU
 import UnitDistance.C22_Prop32
 import UnitDistance.C23_Prop33
 import UnitDistance.C24_Prop34
+<<<<<<< HEAD
 import UnitDistance.C25_Prop35
 import UnitDistance.C26_Prop36
 import UnitDistance.C27_Prop37
+import UnitDistance.C28_Lemma24
