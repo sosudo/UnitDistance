@@ -14,6 +14,11 @@ import UnitDistance.C13_ShafarevichRelRank
 import UnitDistance.C14_CyclotomicCubic
 import UnitDistance.C15_Chebotarev
 import UnitDistance.C16_MinkowskiClassNumber
+import UnitDistance.C20_MinkowskiLattice
 import UnitDistance.C21_NormOneSetU
+import UnitDistance.C22_Prop32
 import UnitDistance.C23_Prop33
 import UnitDistance.C24_Prop34
+import UnitDistance.C25_Prop35
+import UnitDistance.C26_Prop36
+import UnitDistance.C27_Prop37
