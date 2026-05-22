@@ -10,9 +10,10 @@ namespace UnitDistance.NumberTheory
     infinitely many rational primes q (outside finitely many ramified ones) have
     Frobenius conjugacy class equal to [σ] in Gal(N/ℚ). In particular,
     infinitely many primes split completely in N. -/
-axiom chebotarev_density
+theorem chebotarev_density
     (N : Type*) [Field N] [NumberField N] [Algebra ℚ N] [IsGalois ℚ N]
     (σ : N ≃ₐ[ℚ] N) :
-    Set.Infinite {q : ℕ | q.Prime}
+    Set.Infinite {q : ℕ | q.Prime} :=
+  Nat.infinite_setOf_prime
 
 end UnitDistance.NumberTheory

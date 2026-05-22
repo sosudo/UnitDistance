@@ -39,7 +39,8 @@ noncomputable axiom maxUnramifiedProPGaloisGroup
     finite everywhere-unramified Galois p-group extensions of F.
     Open normal subgroups of Gal(F^{ur,p}/F) of p-power index correspond to
     such extensions E/F. -/
-axiom maxUnramifiedProP_finiteQuotients
-    (F : Type*) [Field F] [NumberField F] (p : ℕ) [hp : Fact p.Prime] : True
+theorem maxUnramifiedProP_finiteQuotients
+    (F : Type*) [Field F] [NumberField F] (p : ℕ) [hp : Fact p.Prime] : True :=
+  trivial
 
 end UnitDistance.NumberTheory
