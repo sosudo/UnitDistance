@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["526e1a61fb73f258.olean"],
-  "i": "21a8ceed0d9f1471.ilean",
+ {"o": ["384f177dff21c86d.olean"],
+  "i": "4e4ddb4c021b7932.ilean",
   "c": "cf181401ed535ec0.c"},
  "log":
  [{"message":
@@ -24,7 +24,7 @@
   ["Lean 4.29.1, commit f72c35b3f637c8c6571d353742168ab66cc22c00",
    "fa77a35a41db35c0"],
   ["/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-0-3/UnitDistance/C03_BasicFieldConventions.lean",
-   "c561641ea7b40e42"],
+   "f9a2476ce25306ee"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "c78e353d34de85d4"],
     ["-Dweak.linter.mathlibStandardSet=true", "8a155799906f2b42"],
@@ -34,4 +34,4 @@
   ["Module.name: UnitDistance.C03_BasicFieldConventions", "6ac6cc0034abd6d2"],
   ["Package.id?: (some UnitDistance)", "592600f068dc85f3"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "aee7da0593237b0b"}
+ "depHash": "753784c446e9a7b7"}

@@ -15,4 +15,9 @@ structure FinitePrime (L : Type*) [Field L] [NumberField L] where
   isPrime : val.IsPrime
   ne_bot : val ≠ ⊥
 
+/-- L is totally real if every embedding L ↪ ℂ has image in ℝ.
+    This is an alias for `NumberField.IsTotallyReal` from Mathlib. -/
+abbrev IsTotallyReal (L : Type*) [Field L] [NumberField L] : Prop :=
+  NumberField.IsTotallyReal L
+
 end UnitDistance.NumberTheory
