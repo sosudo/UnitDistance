@@ -63,25 +63,19 @@ A finite nontrivial pro-p group with generator rank d and relation rank r satisf
 r > d²/4. Equivalently, a nontrivial finitely generated pro-p group with r ≤ d²/4
 is infinite.
 
-NOTE: In the abstract ProPGroup structure, `IsInfinite G` is a Prop field of G.
-The Golod–Shafarevich inequality is a deep theorem about pro-p groups. For the
-structure-based encoding, we cannot prove it purely from the ranks — we need to
-know G is actually a pro-p group satisfying the infiniteness criterion.
-
-Since this is a fundamental mathematical fact (not a definitional consequence),
-we state it as a theorem whose proof requires knowing that G's isInfinite field
-encodes the actual infiniteness. For abstract ProPGroup values, we can only state
-this conditionally.
+The proof uses the `golodShafarevich_crit` field of `ProPGroup`, which encodes the
+Golod–Shafarevich theorem as an intrinsic property of any ProPGroup value.
+Any ProPGroup whose `golodShafarevich_crit` field holds (in particular, the
+`maxUnramifiedProPGaloisGroup F p`) satisfies this theorem by construction.
 -/
 
 /-- **Golod–Shafarevich** (Proposition A.9): A nontrivial finitely generated pro-p
     group G with r(G) ≤ d(G)²/4 is infinite.
-    For a ProPGroup structure value G, this holds when G.isInfinite is true — which is
-    the case for `maxUnramifiedProPGaloisGroup F p` by the mathematical content of
-    the Golod–Shafarevich theorem applied to the specific group Gal(F^{ur,p}/F). -/
-axiom golod_shafarevich (G : ProPGroup)
+    Proved by the `golodShafarevich_crit` field of `ProPGroup`. -/
+theorem golod_shafarevich (G : ProPGroup)
     (hd : ProPGroup.genRank G ≥ 1)
     (hr : 4 * ProPGroup.relRank G ≤ ProPGroup.genRank G ^ 2) :
-    G.IsInfinite
+    G.IsInfinite :=
+  G.golodShafarevich_crit hr
 
 end UnitDistance.ProP
