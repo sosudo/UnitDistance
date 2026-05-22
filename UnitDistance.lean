@@ -1,4 +1,5 @@
 import UnitDistance.Basic
+import UnitDistance.CinfraProPGroupType
 import UnitDistance.C01_UnitDistanceFunctions
 import UnitDistance.C02_AdmissibleDatum
 import UnitDistance.C03_BasicFieldConventions
