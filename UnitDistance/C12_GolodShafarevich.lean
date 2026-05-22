@@ -9,16 +9,17 @@ Source (lines 897–899): "If a finite nontrivial pro-p group has generator rank
 and relation rank r, then r > d²/4. Equivalently, a nontrivial finitely generated
 pro-p group with r ≤ d²/4 is infinite."
 
-This file extends C11_ProPGroups.lean with the `IsNontrivial` predicate and the
-explicit finiteness-obstruction direction of Golod–Shafarevich.
+This file extends C11_ProPGroups.lean with the explicit finiteness-obstruction
+direction of Golod–Shafarevich.
+
+`IsNontrivial` is now defined in `CinfraProPGroupType`.
 
 References: [GS64], [GS65], [Koc02, Chapter 11].
 -/
 
 namespace UnitDistance.ProP
 
-/-- Predicate asserting that a pro-p group G is nontrivial (G ≠ {1}). -/
-axiom ProPGroup.IsNontrivial : ProPGroup → Prop
+-- IsNontrivial is imported from CinfraProPGroupType via C11_ProPGroups
 
 /-- **Golod–Shafarevich** (finiteness obstruction).
     If G is a finite nontrivial finitely generated pro-p group with minimal
