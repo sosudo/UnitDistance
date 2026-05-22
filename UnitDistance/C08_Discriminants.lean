@@ -79,11 +79,40 @@ theorem discriminant_tower_formula_statement : True := trivial
     all finite places), then rd(M) = rd(F). This follows from the tower formula:
     if Ideal.absNorm (differentIdeal (𝓞 F) (𝓞 M)) = 1, then
     (discr M).natAbs = (discr F).natAbs ^ finrank F M,
-    so |D_M|^{1/[M:ℚ]} = |D_F|^{1/[F:ℚ]}. -/
-axiom rootDiscriminant_preserved_by_unramified
+    so |D_M|^{1/[M:ℚ]} = |D_F|^{1/[F:ℚ]}.
+
+    Note: We do NOT include explicit [Algebra ℚ F] and [Algebra ℚ M] hypotheses because
+    [NumberField F] and [NumberField M] already provide them, and having both would
+    create a module instance diamond that breaks the proof. -/
+theorem rootDiscriminant_preserved_by_unramified
     (F M : Type*) [Field F] [Field M] [NumberField F] [NumberField M]
-    [Algebra F M] [Algebra ℚ F] [Algebra ℚ M] [IsScalarTower ℚ F M]
+    [Algebra F M] [IsScalarTower ℚ F M]
     (h : Ideal.absNorm (differentIdeal (𝓞 F) (𝓞 M)) = 1) :
-    rootDiscr M = rootDiscr F
+    rootDiscr M = rootDiscr F := by
+  -- Step 1: Tower formula gives (discr M).natAbs = (discr F).natAbs ^ finrank F M
+  have htower : (discr M).natAbs = (discr F).natAbs ^ Module.finrank F M := by
+    have := natAbs_discr_eq_absNorm_differentIdeal_mul_natAbs_discr_pow
+        F (RingOfIntegers F) M (RingOfIntegers M)
+    rw [h, one_mul] at this; exact this
+  -- Step 2: Convert ℤ absolute value to natAbs in ℝ
+  have conv : ∀ n : ℤ, |(n : ℝ)| = (n.natAbs : ℝ) := fun n => by
+    rw [← Int.cast_abs]; simp [Nat.cast_natAbs]
+  simp only [rootDiscr, Int.cast_abs, conv]
+  -- Step 3: Rewrite using htower and rearrange rpow
+  rw [htower]
+  push_cast
+  rw [← Real.rpow_natCast ((discr F).natAbs : ℝ), ← Real.rpow_mul (Nat.cast_nonneg _)]
+  apply congr_arg
+  -- Step 4: Exponent arithmetic: finrank F M * (finrank ℚ M)⁻¹ = (finrank ℚ F)⁻¹
+  -- using finrank_mul_finrank ℚ F M : finrank ℚ F * finrank F M = finrank ℚ M
+  have hFM_nat : Module.finrank ℚ F * Module.finrank F M = Module.finrank ℚ M :=
+    Module.finrank_mul_finrank ℚ F M
+  have hFM_real : (Module.finrank ℚ F : ℝ) * (Module.finrank F M : ℝ) =
+      Module.finrank ℚ M := by exact_mod_cast hFM_nat
+  have hF : (Module.finrank ℚ F : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (Module.finrank_pos (R := ℚ) (M := F)).ne'
+  have hFM' : (Module.finrank F M : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (Module.finrank_pos (R := F) (M := M)).ne'
+  rw [← hFM_real]; field_simp
 
 end UnitDistance.NumberTheory
