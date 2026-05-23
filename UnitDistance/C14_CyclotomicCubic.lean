@@ -15,16 +15,20 @@ axiom cyclotomic_cubic_subfield_exists (r : ℕ) (hr : r.Prime) (hmod : r % 3 = 
       Module.finrank ℚ F = 3 ∧ fieldConductor F = r
 
 /-- Conductor-discriminant formula for finite abelian extensions of ℚ.
-    |D_L| = ∏_{χ ∈ char_group(L/ℚ)} f(χ). -/
-axiom conductor_discriminant_formula_C14
+    |D_L| = ∏_{χ ∈ char_group(L/ℚ)} f(χ).
+    This follows directly from `conductorDiscriminantFormula` (axiomatized in C07). -/
+theorem conductor_discriminant_formula_C14
     (L : Type*) [Field L] [NumberField L] [Algebra ℚ L] (h : IsAbelianExtension L) :
-    (NumberField.discr L).natAbs = (characterGroup L h).prod (fun χ => χ.char.conductor)
+    (NumberField.discr L).natAbs = (characterGroup L h).prod (fun χ => χ.char.conductor) :=
+  conductorDiscriminantFormula L h
 
-/-- Conductor multiplicativity for characters with pairwise coprime conductors. -/
-axiom conductor_mul_coprime_chars_C14
+/-- Conductor multiplicativity for characters with pairwise coprime conductors.
+    This follows directly from `conductor_mul_of_coprime_conductors` (axiomatized in C07). -/
+theorem conductor_mul_coprime_chars_C14
     {n₁ n₂ : ℕ} (χ₁ : DirichletCharacter ℂ n₁) (χ₂ : DirichletCharacter ℂ n₂)
     (hcop : Nat.Coprime χ₁.conductor χ₂.conductor) :
     (DirichletCharacter.mul χ₁ χ₂).conductor =
-      χ₁.conductor * χ₂.conductor
+      χ₁.conductor * χ₂.conductor :=
+  conductor_mul_of_coprime_conductors χ₁ χ₂ hcop
 
 end UnitDistance.NumberTheory
