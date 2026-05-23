@@ -65,15 +65,19 @@ The relative discriminant d_{M/F} is captured via the different ideal.
 The tower formula is `NumberField.natAbs_discr_eq_absNorm_differentIdeal_mul_natAbs_discr_pow`.
 -/
 
-/-- The tower formula for discriminants: for a tower of number fields F ⊆ M,
-    |D_M| = N_{F/ℚ}(d_{M/F}) · |D_F|^{[M:F]}.
-    Here d_{M/F} is the relative discriminant ideal, captured via the different ideal:
-    N_{F/ℚ}(d_{M/F}) = Ideal.absNorm (differentIdeal (𝓞 F) (𝓞 M)).
-    This is exactly `NumberField.natAbs_discr_eq_absNorm_differentIdeal_mul_natAbs_discr_pow`. -/
--- Note: The Mathlib theorem is:
---   (discr M).natAbs = Ideal.absNorm (differentIdeal (𝓞 F) (𝓞 M)) * (discr F).natAbs ^ finrank F M
--- (for appropriate typeclass assumptions)
-theorem discriminant_tower_formula_statement : True := trivial
+/-- The tower formula for discriminants (Proposition A.6):
+    For a tower of number fields ℚ ⊆ F ⊆ M, the absolute discriminant satisfies
+    |D_M| = Ideal.absNorm(d_{M/F}) · |D_F|^[M:F],
+    where d_{M/F} = differentIdeal (𝓞 F) (𝓞 M) is the different ideal of M/F.
+
+    This is the Mathlib theorem
+    `NumberField.natAbs_discr_eq_absNorm_differentIdeal_mul_natAbs_discr_pow`. -/
+theorem discriminant_tower_formula_statement
+    (F M : Type*) [Field F] [Field M] [NumberField F] [NumberField M]
+    [Algebra F M] [IsScalarTower ℚ F M] :
+    (NumberField.discr M).natAbs =
+      Ideal.absNorm (differentIdeal (𝓞 F) (𝓞 M)) * (NumberField.discr F).natAbs ^ Module.finrank F M :=
+  natAbs_discr_eq_absNorm_differentIdeal_mul_natAbs_discr_pow F (𝓞 F) M (𝓞 M)
 
 /-- If M/F has trivial relative discriminant (d_{M/F} = O_F, i.e., M/F is unramified at
     all finite places), then rd(M) = rd(F). This follows from the tower formula:
