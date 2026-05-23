@@ -16,7 +16,7 @@ open UnitDistance.ProP
     The deeper mathematical content — that C₀ can be chosen uniformly across all such F —
     would require the full Shafarevich theorem, but this weaker existential suffices
     for the unit-distance proof's Golod–Shafarevich application. -/
-@[simp] theorem shafarevich_relRank_estimate
+theorem shafarevich_relRank_estimate
     (F : Type*) [Field F] [NumberField F] [NumberField.IsTotallyReal F]
     (hcubic : Module.finrank ℚ F = 3)
     (G := maxUnramifiedProPGaloisGroup F 3) :
