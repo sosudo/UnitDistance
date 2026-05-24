@@ -14,10 +14,10 @@ Per UNITY.md invariant 6, these are the ONLY permitted axioms in the project.
 
 namespace UnitDistance.ProP
 
-/-- **Golod–Shafarevich inequality** (Proposition A.9):
-    A nontrivial finitely generated pro-p group G with 4·r(G) ≤ d(G)² is infinite.
+/-- **Golod-Shafarevich inequality** (Proposition A.9):
+    A nontrivial finitely generated pro-p group G with 4*r(G) <= d(G)^2 is infinite.
 
-    References: [GS64] Golod–Shafarevich 1964, [Koc02, Chapter 11].
+    References: [GS64] Golod-Shafarevich 1964, [Koc02, Chapter 11].
     Mathlib gap: requires completed group ring Hilbert series + cohomology of pro-p groups.
     is_assumption: true (listed as permitted axiom in UNITY.md). -/
 axiom golodShafarevich_criterion (G : ProPGroup) :
