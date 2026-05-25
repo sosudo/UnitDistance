@@ -61,13 +61,13 @@ private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d
   let e : Fin d.f ≃ NumberField.InfinitePlace d.K :=
     (finCongr hcard.symm).trans (Fintype.equivFin (NumberField.InfinitePlace d.K)).symm
   exact {
-    phi := fun k _ => Classical.arbitrary (d.K →+* ℂ) k
+    phi := fun k r => (e r).embedding k
     U := U
-    U_norm_one := fun u hu _ => hU_norm u hu (Classical.arbitrary _)
+    U_norm_one := fun u hu r => hU_norm u hu (e r).embedding
     U_integral := hU_integral
     phi_coord_injective := by
       intro r k₁ k₂ h
-      exact RingHom.injective (Classical.arbitrary (d.K →+* ℂ)) h
+      exact RingHom.injective (e r).embedding h
     phi_ringHoms := fun r => (e r).embedding
     phi_distinct := by
       intro r₁ r₂ h
@@ -115,6 +115,7 @@ private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d
       rw [hkey, Real.sqrt_eq_rpow]
       -- Goal: |↑(norm ℚ k)| ^ (1/2) = ↑|norm ℚ k| ^ (1/2)
       norm_cast
+    phi_eq := fun k r => rfl
   }
 
 /-- Theorem 2.3: Given a sequence of admissible data with fixed primes q₁,...,qₜ,

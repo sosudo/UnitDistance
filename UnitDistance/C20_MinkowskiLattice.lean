@@ -40,6 +40,9 @@ structure MinkowskiLatticeData (d : AdmissibleDatum) : Type* where
     ∀ k : d.K, k ≠ 0 →
       ∏ r : Fin d.f, ‖phi_ringHoms r k‖ =
         |Algebra.norm ℚ k| ^ ((1 : ℝ) / 2)
+  /-- Consistency: phi k r equals phi_ringHoms r k for all k and r.
+      This connects the two embedding representations. -/
+  phi_eq : letI := d.fieldK; ∀ k : d.K, ∀ r : Fin d.f, phi k r = phi_ringHoms r k
 
 /-- The sup-norm on ℂ^f: ‖z‖_∞ = max_r |z_r|. -/
 noncomputable def supNorm {n : ℕ} [NeZero n] (z : Fin n → ℂ) : ℝ :=
