@@ -6,7 +6,11 @@
   "c": "40764d0025500282.c"},
  "log":
  [{"message":
+<<<<<<< HEAD
    ".> LEAN_PATH=/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Cli/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/batteries/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Qq/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/aesop/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/importGraph/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/plausible/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/mathlib/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean /Users/shivanshgour/.elan/toolchains/leanprover--lean4---v4.29.1/bin/lean /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/UnitDistance/C11_ProPGroups.lean -o /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.olean -i /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.ilean -c /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/ir/UnitDistance/C11_ProPGroups.c --setup /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/ir/UnitDistance/C11_ProPGroups.setup.json --json",
+=======
+   ".> LEAN_PATH=/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Cli/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/batteries/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Qq/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/aesop/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/importGraph/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/plausible/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/mathlib/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/.lake/build/lib/lean /Users/shivanshgour/.elan/toolchains/leanprover--lean4---v4.29.1/bin/lean /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/UnitDistance/C11_ProPGroups.lean -o /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.olean -i /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.ilean -c /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/.lake/build/ir/UnitDistance/C11_ProPGroups.c --setup /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/.lake/build/ir/UnitDistance/C11_ProPGroups.setup.json --json",
+>>>>>>> worktree/chunk-infra-prime-ideals
    "level": "trace"},
   {"message":
    "UnitDistance/C11_ProPGroups.lean:66:5: unused variable `hd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
@@ -32,7 +36,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.1, commit f72c35b3f637c8c6571d353742168ab66cc22c00",
    "fa77a35a41db35c0"],
+<<<<<<< HEAD
   ["/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/UnitDistance/C11_ProPGroups.lean",
+=======
+  ["/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-prime-ideals/UnitDistance/C11_ProPGroups.lean",
+>>>>>>> worktree/chunk-infra-prime-ideals
    "95b0022da8e1c680"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "c78e353d34de85d4"],

@@ -54,6 +54,22 @@ structure AdmissibleDatum where
     letI : Field K := fieldK
     letI : NumberField K := numberFieldK
     Fintype.card (NumberField.InfinitePlace K) = Module.finrank ℚ L
+  /-- For each prime index b, the pair (P_b, cP_b) of CM-conjugate prime ideals above primes b
+      in 𝓞 K. The first component P_b is a prime ideal above q_b, and the second component is
+      its CM conjugate. -/
+  primeIdealPairs : Fin t → Ideal (𝓞 K) × Ideal (𝓞 K)
+  /-- First component P_b is a prime ideal lying above q_b in ℤ -/
+  primeIdealPairs_fst_prime : ∀ b,
+    (primeIdealPairs b).1.IsPrime ∧
+    (primeIdealPairs b).1.LiesOver (Ideal.span {(primes b : ℤ)} : Ideal ℤ)
+  /-- Second component is the image of P_b under the CM conjugation automorphism of 𝓞 K -/
+  primeIdealPairs_snd_eq_conj : ∀ b,
+    (primeIdealPairs b).2 =
+      Ideal.map
+        (RingOfIntegers.mapAlgEquiv (IsCMField.complexConj K)).toRingHom
+        (primeIdealPairs b).1
+  /-- The two ideals in each pair are distinct (P_b ≠ cP_b) -/
+  primeIdealPairs_distinct : ∀ b, (primeIdealPairs b).1 ≠ (primeIdealPairs b).2
 
 /-- The product Q = ∏_{i} qᵢ -/
 noncomputable def AdmissibleDatum.Q (d : AdmissibleDatum) : ℕ :=
