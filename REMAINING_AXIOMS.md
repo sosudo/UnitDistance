@@ -1,6 +1,6 @@
 # Remaining Axioms (is_assumption: false)
 
-This file documents the five axioms introduced for `is_assumption: false` chunks that
+This file documents the axioms introduced for `is_assumption: false` chunks that
 could not be closed in this formalization run. Each axiom is stated faithfully to the PDF
 source and tagged with the missing Lean/Mathlib API needed to discharge it.
 
@@ -8,7 +8,9 @@ Per UNITY.md: "A clean build with a non-empty REMAINING_AXIOMS.md is a **partial
 report it as partial, do not merge it as complete."
 
 **Build status**: `lake build UnitDistance` passes. Zero `sorry` or `admit` in the project.
-**Pass**: Tenth formalization pass (2026-05-24).
+**16th exploration pass update (2026-05-25)**: `lemma26_packingBound` is now PROVED (commit `baccc15`).
+Schema repairs (phi_ringHoms/phi_distinct/phi_normProduct in MinkowskiLatticeData, primeIdealPairs in
+AdmissibleDatum) are APPLIED. 4 axioms remain (down from 5).
 
 ---
 
