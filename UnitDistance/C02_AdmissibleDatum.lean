@@ -45,6 +45,15 @@ structure AdmissibleDatum where
   primesDistinct : Function.Injective primes
   /-- Each qᵢ splits completely in L -/
   primeSplitsInL : ∀ i, IsCompletelySplitRational (primes i) (primePrime i) L
+  /-- The number of infinite places of K equals f = [L:ℚ].
+      This holds because K/L is quadratic (K is CM, L is the totally real subfield),
+      so [K:ℚ] = 2f and K is totally complex, giving nrComplexPlaces(K) = f infinite places. -/
+  hKL_card :
+    letI : Field L := fieldL
+    letI : NumberField L := numberFieldL
+    letI : Field K := fieldK
+    letI : NumberField K := numberFieldK
+    Fintype.card (NumberField.InfinitePlace K) = Module.finrank ℚ L
 
 /-- The product Q = ∏_{i} qᵢ -/
 noncomputable def AdmissibleDatum.Q (d : AdmissibleDatum) : ℕ :=
@@ -59,5 +68,12 @@ noncomputable def AdmissibleDatum.f (d : AdmissibleDatum) : ℕ :=
 /-- The total number of conjugate prime-ideal pairs m = t·f -/
 noncomputable def AdmissibleDatum.m (d : AdmissibleDatum) : ℕ :=
   d.t * d.f
+
+/-- The number of infinite places of K equals f, extracted as a clean lemma. -/
+lemma AdmissibleDatum.hKL_card' (d : AdmissibleDatum) :
+    letI := d.fieldK; letI := d.numberFieldK;
+    Fintype.card (NumberField.InfinitePlace d.K) = d.f := by
+  letI := d.fieldL; letI := d.numberFieldL; letI := d.fieldK; letI := d.numberFieldK
+  exact d.hKL_card
 
 end UnitDistance

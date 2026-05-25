@@ -29,6 +29,17 @@ structure MinkowskiLatticeData (d : AdmissibleDatum) : Type* where
     ∀ u ∈ U, IsIntegral ℤ ((d.Q : d.K) ^ 2 * u)
   /-- Every coordinate projection of phi is injective (each σ_r : K → ℂ is a field embedding) -/
   phi_coord_injective : ∀ r : Fin d.f, Function.Injective (fun k => phi k r)
+  /-- f distinct complex ring homomorphisms from K into ℂ, one per conjugate pair of places -/
+  phi_ringHoms : letI := d.fieldK; Fin d.f → (d.K →+* ℂ)
+  /-- The f ring homomorphisms are pairwise distinct (injective as a map Fin d.f → (d.K →+* ℂ)) -/
+  phi_distinct : letI := d.fieldK; Function.Injective phi_ringHoms
+  /-- Product-norm identity: ∏_r ‖phi_ringHoms r k‖ = |Algebra.norm ℚ k|^(1/2)
+      This follows from the product formula for infinite places of CM fields. -/
+  phi_normProduct : letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK;
+    letI := d.cmFieldK;
+    ∀ k : d.K, k ≠ 0 →
+      ∏ r : Fin d.f, ‖phi_ringHoms r k‖ =
+        |Algebra.norm ℚ k| ^ ((1 : ℝ) / 2)
 
 /-- The sup-norm on ℂ^f: ‖z‖_∞ = max_r |z_r|. -/
 noncomputable def supNorm {n : ℕ} [NeZero n] (z : Fin n → ℂ) : ℝ :=

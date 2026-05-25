@@ -1,15 +1,15 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["ffc0ff5a260bef80.olean"],
-  "i": "593054d1e6442c8c.ilean",
-  "c": "93dfe8d6d6a2a2a4.c"},
+ {"o": ["2fae901e2dfa7eea.olean"],
+  "i": "df59f3b16f08e805.ilean",
+  "c": "40764d0025500282.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Cli/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/batteries/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Qq/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/aesop/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/importGraph/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/plausible/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/mathlib/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/build/lib/lean /Users/shivanshgour/.elan/toolchains/leanprover--lean4---v4.29.1/bin/lean /Users/shivanshgour/Downloads/udc/UnitDistance/UnitDistance/C11_ProPGroups.lean -o /Users/shivanshgour/Downloads/udc/UnitDistance/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.olean -i /Users/shivanshgour/Downloads/udc/UnitDistance/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.ilean -c /Users/shivanshgour/Downloads/udc/UnitDistance/.lake/build/ir/UnitDistance/C11_ProPGroups.c --setup /Users/shivanshgour/Downloads/udc/UnitDistance/.lake/build/ir/UnitDistance/C11_ProPGroups.setup.json --json",
+   ".> LEAN_PATH=/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Cli/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/batteries/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/Qq/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/aesop/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/importGraph/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/plausible/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.lake/packages/mathlib/.lake/build/lib/lean:/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean /Users/shivanshgour/.elan/toolchains/leanprover--lean4---v4.29.1/bin/lean /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/UnitDistance/C11_ProPGroups.lean -o /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.olean -i /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/lib/lean/UnitDistance/C11_ProPGroups.ilean -c /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/ir/UnitDistance/C11_ProPGroups.c --setup /Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/.lake/build/ir/UnitDistance/C11_ProPGroups.setup.json --json",
    "level": "trace"},
   {"message":
-   "UnitDistance/C11_ProPGroups.lean:76:5: unused variable `hd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "UnitDistance/C11_ProPGroups.lean:66:5: unused variable `hd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
    "level": "warning"}],
  "inputs":
  [["UnitDistance.C11_ProPGroups:deps",
@@ -21,8 +21,10 @@
         ["Mathlib:importAllArts", "1f979cbc8a135c61"],
         ["UnitDistance.CinfraProPGroupType transitive imports (legacy)",
          "ef60c7a2c20917df"],
-        ["UnitDistance.CinfraProPGroupType:importAllArts",
-         "040502bcef3753a5"]]]]],
+        ["UnitDistance.CinfraProPGroupType:importAllArts", "d908a039aac59af1"],
+        ["UnitDistance.STANDARD_AXIOMS transitive imports (legacy)",
+         "4b963b03b963c6b2"],
+        ["UnitDistance.STANDARD_AXIOMS:importAllArts", "ced19064346d21c3"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -30,8 +32,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.1, commit f72c35b3f637c8c6571d353742168ab66cc22c00",
    "fa77a35a41db35c0"],
-  ["/Users/shivanshgour/Downloads/udc/UnitDistance/UnitDistance/C11_ProPGroups.lean",
-   "6e07bd3e5ab597be"],
+  ["/Users/shivanshgour/Downloads/udc/UnitDistance/.worktrees/chunk-infra-minkowski-embedding/UnitDistance/C11_ProPGroups.lean",
+   "95b0022da8e1c680"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "c78e353d34de85d4"],
     ["-Dweak.linter.mathlibStandardSet=true", "8a155799906f2b42"],
@@ -41,4 +43,4 @@
   ["Module.name: UnitDistance.C11_ProPGroups", "1e1b7afd210f699a"],
   ["Package.id?: (some UnitDistance)", "592600f068dc85f3"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "27d51454f383829c"}
+ "depHash": "43f0907944deee7e"}

@@ -44,7 +44,7 @@ private lemma data_f_pos (d : AdmissibleDatum) : 0 < d.f := by
   letI := d.fieldL; letI := d.numberFieldL
   exact Module.finrank_pos (R := ℚ) (M := d.L)
 
-/-- Helper: construct MinkowskiLatticeData using a fixed ring hom -/
+/-- Helper: construct MinkowskiLatticeData using InfinitePlace embeddings -/
 private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d.f]
     (U : Finset d.K)
     (hU_norm : letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK;
@@ -52,8 +52,14 @@ private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d
     (hU_integral : letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK;
       ∀ u ∈ U, IsIntegral ℤ ((d.Q : d.K) ^ 2 * u)) :
     MinkowskiLatticeData d := by
-  letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK
+  letI := d.fieldK; letI := d.charZeroK; letI := d.numberFieldK; letI := d.cmFieldK
+  letI := d.algebraLK
   haveI : Nonempty (d.K →+* ℂ) := inferInstance
+  -- Build the bijection Fin d.f ≃ InfinitePlace d.K using hKL_card
+  have hcard : Fintype.card (NumberField.InfinitePlace d.K) = d.f := d.hKL_card'
+  -- Bijection e : Fin d.f ≃ InfinitePlace d.K
+  let e : Fin d.f ≃ NumberField.InfinitePlace d.K :=
+    (finCongr hcard.symm).trans (Fintype.equivFin (NumberField.InfinitePlace d.K)).symm
   exact {
     phi := fun k _ => Classical.arbitrary (d.K →+* ℂ) k
     U := U
@@ -61,8 +67,54 @@ private noncomputable def mkMinkowskiLatticeData (d : AdmissibleDatum) [NeZero d
     U_integral := hU_integral
     phi_coord_injective := by
       intro r k₁ k₂ h
-      -- h : Classical.arbitrary (d.K →+* ℂ) k₁ = Classical.arbitrary (d.K →+* ℂ) k₂
       exact RingHom.injective (Classical.arbitrary (d.K →+* ℂ)) h
+    phi_ringHoms := fun r => (e r).embedding
+    phi_distinct := by
+      intro r₁ r₂ h
+      -- h : (e r₁).embedding = (e r₂).embedding
+      -- Use embedding_injective to get e r₁ = e r₂, then injectivity of e
+      apply e.injective
+      exact NumberField.InfinitePlace.embedding_injective d.K h
+    phi_normProduct := by
+      intro k hk
+      -- Goal: ∏ r : Fin d.f, ‖(e r).embedding k‖ = |Algebra.norm ℚ k|^(1/2)
+      -- Step 1: Reindex from Fin d.f to InfinitePlace d.K via bijection e
+      have h1 : ∏ r : Fin d.f, ‖(e r).embedding k‖ =
+          ∏ w : NumberField.InfinitePlace d.K, ‖w.embedding k‖ :=
+        Equiv.prod_comp e (fun w => ‖w.embedding k‖)
+      rw [h1]
+      -- Step 2: Use norm_embedding_eq: ‖w.embedding k‖ = w k
+      simp_rw [NumberField.InfinitePlace.norm_embedding_eq]
+      -- Goal: ∏ w : InfinitePlace d.K, w k = |Algebra.norm ℚ k|^(1/2)
+      -- Step 3: Show (∏ w, w k)^2 = |(Algebra.norm ℚ k : ℝ)|
+      --   (Note: prod_eq_abs_norm gives ↑|norm : ℚ|, which equals |(norm : ℝ)| by Rat.cast_abs)
+      have h3 : (∏ w : NumberField.InfinitePlace d.K, w k) ^ 2 =
+          |(Algebra.norm ℚ k : ℝ)| := by
+        rw [← Finset.prod_pow]
+        -- Goal: ∏ w, w k ^ 2 = |(Algebra.norm ℚ k : ℝ)|
+        have hmult := @NumberField.InfinitePlace.prod_eq_abs_norm d.K _ _ k
+        simp_rw [NumberField.IsTotallyComplex.mult_eq] at hmult
+        -- hmult : ∏ w, w k ^ 2 = |Algebra.norm ℚ k| which is ↑|(norm ℚ k : ℚ)|
+        rw [hmult]
+        -- Goal: ↑|(Algebra.norm ℚ k : ℚ)| = |(Algebra.norm ℚ k : ℝ)|
+        exact_mod_cast (Rat.cast_abs (Algebra.norm ℚ k)).symm
+      -- Step 4: ∏ w, w k ≥ 0 (product of non-negatives)
+      have hprod_nn : 0 ≤ ∏ w : NumberField.InfinitePlace d.K, w k :=
+        Finset.prod_nonneg (fun w _ => apply_nonneg w k)
+      -- Step 5: Conclude ∏ w, w k = |(norm ℚ k : ℝ)|^(1/2) using sqrt
+      have hkey : ∏ w : NumberField.InfinitePlace d.K, w k =
+          Real.sqrt |(Algebra.norm ℚ k : ℝ)| := by
+        have h_sqrt_sq := Real.sqrt_sq hprod_nn
+        rw [h3] at h_sqrt_sq
+        exact h_sqrt_sq.symm
+      -- Rewrite using sqrt = rpow (1/2) and reconcile the two forms of |norm ℚ k|
+      -- Goal: ∏ w, w k = |Algebra.norm ℚ k| ^ (1/2)
+      -- where |Algebra.norm ℚ k| in the field type is |↑(norm ℚ k : ℝ)|
+      -- but hkey gives ∏ w, w k = √|↑(norm ℚ k)|
+      -- and h3 used ↑|norm ℚ k : ℚ|; reconcile via Rat.cast_abs
+      rw [hkey, Real.sqrt_eq_rpow]
+      -- Goal: |↑(norm ℚ k)| ^ (1/2) = ↑|norm ℚ k| ^ (1/2)
+      norm_cast
   }
 
 /-- Theorem 2.3: Given a sequence of admissible data with fixed primes q₁,...,qₜ,
