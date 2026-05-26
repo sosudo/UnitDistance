@@ -11,6 +11,10 @@ report it as partial, do not merge it as complete."
 **16th exploration pass update (2026-05-25)**: `lemma26_packingBound` is now PROVED (commit `baccc15`).
 Schema repairs (phi_ringHoms/phi_distinct/phi_normProduct in MinkowskiLatticeData, primeIdealPairs in
 AdmissibleDatum) are APPLIED. 4 axioms remain (down from 5).
+**17th formalization pass update (2026-05-25)**: `C15_Chebotarev` Invariant 3 violation fixed — replaced
+vacuous `theorem chebotarev_density := Nat.infinite_setOf_prime` with faithful `axiom chebotarev_density`
+that uses the Galois extension N and automorphism σ and states existence of infinitely many primes with
+Frobenius = σ (commit `0fe8f46`). 4 `is_assumption: false` axioms still remain (unchanged).
 
 ---
 
