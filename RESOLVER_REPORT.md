@@ -1,10 +1,12 @@
-# RESOLVER REPORT — Formalization Phase (Attempt 6)
+# RESOLVER REPORT — Formalization Phase (Attempt 11)
 
 ## Diagnosis
 
 **Error:** `git worktree add -b worktree/chunk-0-1 .worktrees/chunk-0-1` → exit status 255
 
-**Root cause:** Stale worktrees (6th consecutive occurrence). The previous formalization run was interrupted before it could tear down its 43 git worktrees. On retry, `git worktree add -b` fails immediately because the branches (`worktree/chunk-*`) and directories (`.worktrees/chunk-*`) already exist.
+**Root cause:** Stale worktrees (11th consecutive occurrence). The previous formalization run was interrupted before it could tear down its 43 git worktrees. On retry, `git worktree add -b` fails immediately because the branches (`worktree/chunk-*`) and directories (`.worktrees/chunk-*`) already exist.
+
+**Notable state this run:** Three worktree branches had commits ahead of the base (`chunk-2-1`: 2b61b5e, `chunk-2-10`: a6b5ebb, `chunk-infra-minkowski-embedding`: ba359b3, `chunk-infra-prime-ideals`: 5ad9ca6) — all of these commits were already merged into main (`fe48258`).
 
 ## Cleanup Performed
 
@@ -14,7 +16,7 @@
 
 ## Post-Cleanup State
 
-- Main worktree only: `5b4c0b6 [main]`
+- Main worktree only: `fe48258 [main]`
 - No `worktree/*` branches
 - No `.worktrees/` directories
 - All 43 chunks already `status: "pending"` in `dag.json`
@@ -23,7 +25,7 @@
 
 **`formalization`** — environment is clean for fresh worktree creation.
 
-## ⚠️ Recurring Pattern (6th consecutive failure)
+## ⚠️ Recurring Pattern (11th consecutive failure)
 
 The formalization orchestrator **must** add a pre-flight cleanup guard at the very start of every run:
 
